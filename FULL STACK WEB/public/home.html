@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   
+    
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style> 
+    * {
+        text-decoration: none;
+        
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+  background-size: cover;
+  color: black;
+  
+}
+
+
+
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+
+body{
+     /* background-image:url(./345.jpg);  */
+     background-color: #fff;
+
+   background-repeat:no-repeat;
+
+   background-size:cover;
+}
+
+.logo{
+  color:black;
+    font-size: 60px;
+    line-height:80px;
+   
+    display: inline-block;
+    width: 100%;
+    font-weight: bold;
+    background-color: #0270c3;
+    
+    
+    text-align:center;
+    /* border-top: #0270c3; */
+    /* margin: 0px 0px; */
+    /* justify-content: center; */
+}
+
+
+#KH{
+    float: right;
+}
+#LM{
+    float: right;
+    
+}
+#QM{
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+.btn{
+    padding: 70px 100px ;
+    text-decoration: none;
+
+    margin: 50px;
+    font-size:xx-large;
+    border-radius: 50%;
+    line-height: 50px;
+    background-color: lightcoral;
+    text-align: auto;
+    float: left;
+}
+
+.th,td{
+    border: 1px solid black;
+    /* border-collapse: collapse; */
+    /* width: 100%; */
+    height: 100%;
+    color: black;
+    
+
+    text-align: center;
+    margin: 25px 50px;
+    font-size: 30px;
+    /* margin-top:100px; */
+    /* margin-left:100px; */
+
+}
+    
+      </style>
+   
+
+    
+
+
+
+
+
+
+
+</head>
+
+
+ 
+<body>
+    <nav>
+        <label class="logo">SRIJAN 2.O</label>
+        
+            
+
+    
+
+
+        
+
+            <div>
+                
+                
+                <button class="btn" id="QM"><a href="#">Zone4</button>
+
+                </div>
+                
+            
+
+
+            
+
+
+                    
+
+                    
+
+                            <div class="row">
+                                <div class="column">
+                                  
+                                  
+                <button class="btn"     id="LM" ><a href="#">Zone3</button>
+
+                </div>
+            </div>
+            </div>
+                    
+                    <div class="row">
+                        <div class="column">
+                          
+                          
+                
+                <button class="btn" id="KH" ><a href="#">Zone2</button>
+
+                </div>
+            </div>
+
+            
+            </div>
+
+
+
+
+            <table style="width:100%" >
+
+                <style>
+                    table,th,td{
+                    border:1px solid black;
+                    font-size: 30px;
+                    }
+                    </style>
+                    
+
+                <colgroup> 
+                    <colgroup span="2"> </colgroup>
+                    <colgroup span="2"> </colgroup>
+                <tr>
+                    
+                    <tr>
+                       
+                    
+                 <th></th>
+                 
+                    
+                    <th colspan="2" >Zone1</th>
+                    <th colspan="2">Zone2</th>
+                    <th colspan="2">Zone3</th>
+                    <th colspan="2">Zone4</th>
+
+                </tr>
+                <tr>
+                    <th>Sensors</th>
+                    <th>Area 1</th>
+                    <th>Area 2</th>
+                    <th>Area 3</th>
+                    <th>Area 4</th>
+                    <th>Area 5</th>
+                    <th>Area 6</th>
+                    <th>Area 7</th>
+                    
+                </tr>
+                <tr>
+                    <td >Methane</td>
+                    <td id="M"></td>
+                    <td>33</td>
+                    <td>50</td>
+                    <td>88</td>
+                    <td>44</td>
+                    <td>78</td>
+                    <td>20</td>
+                    
+                </tr>
+                <tr>
+                    <td >Carbonmonoxide</td>
+                    <td id="C"></td>
+                    <td>44</td>
+                    <td>87</td>
+                    <td>24</td>
+                    <td>87</td>
+                    <td>32</td>
+                    <td>43</td>
+                    
+                </tr>
+                <tr>
+                    <td >Temperature</td>
+                    <td id="T"></td>
+                    <td>33</td>
+                    <td>34</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>44</td>
+                    <td>56</td>
+                    
+                </tr>
+                <tr>
+                    <td >Humidity</td>
+                    <td id="H"></td>
+                    <td>22</td>
+                    <td>65</td>
+                    <td>43</td>
+                    <td>23</td>
+                    <td>21</td>
+                    <td>43</td>
+                    
+                </tr>
+                <tr>
+                    <td >Fire</td>
+                    <td id="F"></td>
+                    <td>11</td>
+                    <td>34</td>
+                    <td>12</td>
+                    <td>21</td>
+                    <td>32</td>
+                    <td>21</td>
+                    
+                </tr>
+                <tr>
+                    <td >Ceiling collapse</td>
+                    <td id="CE">NO</td>
+                    <td >NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    
+                </tr>
+
+                <tr>
+                    <td>MineHaulage</td>
+                    <td  id="MI">NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                    
+                </tr>
+            </table>
+                   
+
+
+                
+            </div>
+            
+            
+        
+    </nav>
+    
+        
+
+    </a>
+    <section></section>
+    
+    <div id="snackbar">Some text some message..</div>
+
+    
+    
+
+    <script src="zonedata.js"></script>
+</body>
+</html>
